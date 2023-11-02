@@ -98,8 +98,8 @@ public class MainController {
         return "Email or password is missing";
     }
 
-
     //Create a model for food, and create an api to add food and get a list of foods, and a single food if user passes a food name
+
 
     //Create another api to find food in a given price range
 }
