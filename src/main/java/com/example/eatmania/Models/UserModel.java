@@ -6,6 +6,7 @@ public class UserModel {
     private String password;
 
     private String address;
+    private String firstName;
 
     public UserModel(String userEmail, String password) {
         this.userEmail = userEmail;
