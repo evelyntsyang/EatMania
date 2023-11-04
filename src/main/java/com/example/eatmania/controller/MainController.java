@@ -95,7 +95,7 @@ public class MainController {
             return "Your account has been succesfull created with " + email + "and" + password;
 
         }
-        return "Email or password is missing";
+        return "Email or password is missing  ";
     }
 
     //Create a model for food, and create an api to add food and get a list of foods, and a single food if user passes a food name
