@@ -34,9 +34,19 @@ public class AdminController {
         }
 
         //Deletes a restaurant
+        @DeleteMapping(path = "/restaurant/{id}")
+        public ResponseEntity<HttpStatus> deleteRestaurant(@PathVariable("id") long id){
+
+                try{
+                        restaurantRepo.deleteById(id);
+                        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                }
+                catch(Exception e){
+                        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+        }
 
         //Retrieves restaurant list with info by using search string (optional)
-
         @GetMapping(path = "/restaurantlist")
         public ResponseEntity<List<RestaurantModel>> getRestaurants(@RequestParam(required = false) String searchString){
 
