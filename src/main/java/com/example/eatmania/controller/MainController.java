@@ -1,14 +1,16 @@
 package com.example.eatmania.controller;
 import com.example.eatmania.Models.FoodModel;
+import com.example.eatmania.Models.FoodRepository;
 import com.example.eatmania.Models.UserModel;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.VersionProps.print;
+
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -88,6 +90,10 @@ public class MainController {
     public void setFoodPrice(List<Integer> foodPrice) {
         this.foodPrice = foodPrice;
     }
+
+    @Autowired
+    FoodRepository foodRepo;
+
     @GetMapping("/hello")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
         String name1 = "Eveyln";
@@ -181,6 +187,12 @@ public class MainController {
         return "foodname is missing";
     }
 
+    @GetMapping("/GetAllFoods")
+    public String GetFood(){
+
+        List<FoodModel> foods = foodRepo.findAll();
+        return null;
+    }
 
 
 

@@ -9,4 +9,6 @@ public interface RestaurantRepository extends JpaRepository<RestaurantModel, Lon
     List<RestaurantModel> findRestaurantModelByNameContainingIgnoreCase (String name);
     List<RestaurantModel> findRestaurantModelByCuisineTypeIgnoreCase(String cuisineType);
 
+
+
 }

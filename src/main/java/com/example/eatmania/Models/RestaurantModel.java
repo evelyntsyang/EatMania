@@ -15,7 +15,6 @@ public class RestaurantModel {
     @Column(name = "PhoneNumber")
     private String phoneNumber;
 
-
     @Column(name = "CuisineType")
     private String cuisineType;
 
