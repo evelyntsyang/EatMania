@@ -1,7 +1,6 @@
 package com.example.eatmania.controller;
 
-import com.example.eatmania.Models.RestaurantModel;
-import com.example.eatmania.Models.RestaurantRepository;
+import com.example.eatmania.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,29 @@ public class AdminController {
 
         @Autowired
         RestaurantRepository restaurantRepo;
+
+        @Autowired
+        AdminRepository adminRepo;
+
+
+        @GetMapping("/GetAllAdmins")
+        public List<AdminModel> GetAdmin(){
+
+                List<AdminModel> admin = adminRepo.findAll();
+                return admin;
+        }
+
+
+
+
+        @GetMapping("/GetAllRestaurants")
+        public List<RestaurantModel> GetRestaurant(){
+                List<RestaurantModel> restaurants = restaurantRepo.findAll();
+                return restaurants;
+        }
+
+
+
 
         // Creates a new restaurant
         @PostMapping(path = "/restaurant")
@@ -59,6 +81,7 @@ public class AdminController {
                         else {
                                 restaurantRepo.findRestaurantModelByNameContainingIgnoreCase(searchString).forEach(restaurants::add);
                                 restaurantRepo.findRestaurantModelByCuisineTypeIgnoreCase(searchString).forEach(restaurants::add);
+
                         }
                         if(restaurants.isEmpty()){
                                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -69,6 +92,9 @@ public class AdminController {
                         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
         }
+
+
+
 
         //Creates a food item
 

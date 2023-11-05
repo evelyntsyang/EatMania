@@ -8,6 +8,9 @@ import java.util.List;
 @Table(name = "food_items")  // Define the table name
 public class FoodModel {
 
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_id")  // Define the column name for the ID
@@ -22,6 +25,23 @@ public class FoodModel {
     @Column(name = "restaurant_name")  // Define the column name for restaurantName
     private String restaurantName;
 
+    @Column(name = "description")  // Define the column name for description
+    private String description;
+
+    @Column(name = "adminID")  // Define the column name for adminid
+    private Long adminID;
+
+//    @ManyToOne
+//    @JoinColumn(name = "restaurant_id")
+//    private RestaurantModel restaurant;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAdminID(long adminID) {
+        this.adminID = adminID;
+    }
     public void setFoodName(String foodName) {
         this.foodName = foodName;
     }
@@ -46,10 +66,19 @@ public class FoodModel {
         return restaurantName;
     }
 
-    public FoodModel(String foodName, int foodPrice, String restaurantName) {
+    public String getDescription() { return description;}
+
+    public long getAdminID() {
+        return adminID;
+    }
+
+
+    public FoodModel(String foodName, int foodPrice, String restaurantName, String description, long adminId) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.restaurantName = restaurantName;
+        this.description = description;
+        this.adminID=adminId;
     }
 
     public FoodModel() {

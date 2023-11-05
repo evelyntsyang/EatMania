@@ -5,8 +5,11 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "RESTAURANT")
 public class RestaurantModel {
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "restaurant_id")
     private long id;
 
     @Column(name = "Name")
@@ -37,6 +40,8 @@ public class RestaurantModel {
         this.description = description;
         this.website = website;
     }
+
+
 
     public long getId() {
         return id;
