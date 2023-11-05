@@ -1,23 +1,47 @@
 package com.example.eatmania.Models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "food_items")  // Define the table name
 public class FoodModel {
 
+
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "food_id")  // Define the column name for the ID
+    private Long id;
+
+    @Column(name = "food_name")  // Define the column name for foodName
     private String foodName;
+
+    @Column(name = "food_price")  // Define the column name for foodPrice
     private int foodPrice;
+
+    @Column(name = "restaurant_name")  // Define the column name for restaurantName
     private String restaurantName;
 
+    @Column(name = "description")  // Define the column name for description
+    private String description;
 
+    @Column(name = "adminID")  // Define the column name for adminid
+    private Long adminID;
 
+//    @ManyToOne
+//    @JoinColumn(name = "restaurant_id")
+//    private RestaurantModel restaurant;
 
-    public FoodModel(String foodName,String restaurantName, int foodPrice) {
-        this.foodName = foodName;
-        this.restaurantName = restaurantName;
-        this.foodPrice = foodPrice;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-
+    public void setAdminID(long adminID) {
+        this.adminID = adminID;
+    }
     public void setFoodName(String foodName) {
         this.foodName = foodName;
     }
@@ -42,6 +66,22 @@ public class FoodModel {
         return restaurantName;
     }
 
+    public String getDescription() { return description;}
+
+    public long getAdminID() {
+        return adminID;
+    }
 
 
+    public FoodModel(String foodName, int foodPrice, String restaurantName, String description, long adminId) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.restaurantName = restaurantName;
+        this.description = description;
+        this.adminID=adminId;
+    }
+
+    public FoodModel() {
+
+    }
 }

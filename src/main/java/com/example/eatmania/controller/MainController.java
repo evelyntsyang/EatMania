@@ -1,14 +1,13 @@
 package com.example.eatmania.controller;
-import com.example.eatmania.Models.FoodModel;
-import com.example.eatmania.Models.UserModel;
+import com.example.eatmania.Models.*;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import static java.lang.VersionProps.print;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -17,12 +16,10 @@ public class MainController {
 
     private List<String> userEmails ;
     private List<String> userPasswords;
-
     private List<UserModel> usersList;
 
 
     private List<FoodModel> foodList;
-
     private List<String> foodName;
     private List<String> restaurantName;
     private List<Integer> foodPrice;
@@ -88,6 +85,13 @@ public class MainController {
     public void setFoodPrice(List<Integer> foodPrice) {
         this.foodPrice = foodPrice;
     }
+
+    @Autowired
+    FoodRepository foodRepo;
+
+
+
+
     @GetMapping("/hello")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
         String name1 = "Eveyln";
@@ -184,5 +188,20 @@ public class MainController {
 
 
 
-    //Create another api to find food in a given price range
+    @GetMapping("/GetAllFoods")
+    public List<FoodModel> GetFood(){
+        //foodRepo - database name
+        List<FoodModel> foods = foodRepo.findAll();
+        return foods;
+    }
+
+
+
+    @GetMapping("/searchFoodByName")
+    public List<FoodModel> searchFoodByName(@RequestParam String foodName) {
+        // Use the repository method to search for food by name
+        return foodRepo.findFoodModelByFoodNameContainingIgnoreCase(foodName);
+    }
+
+
 }
