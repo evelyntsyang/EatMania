@@ -1,6 +1,9 @@
 package com.example.eatmania.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -10,20 +13,16 @@ public class FoodModel {
 
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_id")  // Define the column name for the ID
-    private Long id;
+    private Long foodId;
 
     @Column(name = "food_name")  // Define the column name for foodName
     private String foodName;
 
     @Column(name = "food_price")  // Define the column name for foodPrice
-    private int foodPrice;
-
-    @Column(name = "restaurant_name")  // Define the column name for restaurantName
-    private String restaurantName;
+    private double foodPrice;
 
     @Column(name = "description")  // Define the column name for description
     private String description;
@@ -31,10 +30,26 @@ public class FoodModel {
     @Column(name = "adminID")  // Define the column name for adminid
     private Long adminID;
 
-//    @ManyToOne
-//    @JoinColumn(name = "restaurant_id")
-//    private RestaurantModel restaurant;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private RestaurantModel restaurant;
+
+    public FoodModel(String foodName, double foodPrice, String description, Long adminID) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.description = description;
+        this.adminID = adminID;
+    }
+
+    public FoodModel() {
+
+    }
+
+    public Long getFoodId() {
+        return foodId;
+    }
     public void setDescription(String description) {
         this.description = description;
     }
@@ -46,42 +61,32 @@ public class FoodModel {
         this.foodName = foodName;
     }
 
-    public void setFoodPrice(int foodPrice) {
+    public void setFoodPrice(double foodPrice) {
         this.foodPrice = foodPrice;
     }
 
-    public void setRestaurantName(String foodSpicy) {
-        this.restaurantName = foodSpicy;
-    }
 
     public String getFoodName() {
         return foodName;
     }
 
-    public int getFoodPrice() {
+    public double getFoodPrice() {
         return foodPrice;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
-    }
 
     public String getDescription() { return description;}
+
+    public RestaurantModel getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantModel restaurant) {
+        this.restaurant = restaurant;
+    }
 
     public long getAdminID() {
         return adminID;
     }
 
-
-    public FoodModel(String foodName, int foodPrice, String restaurantName, String description, long adminId) {
-        this.foodName = foodName;
-        this.foodPrice = foodPrice;
-        this.restaurantName = restaurantName;
-        this.description = description;
-        this.adminID=adminId;
-    }
-
-    public FoodModel() {
-
-    }
 }

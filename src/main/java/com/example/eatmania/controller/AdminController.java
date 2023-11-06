@@ -22,6 +22,9 @@ public class AdminController {
         @Autowired
         AdminRepository adminRepo;
 
+        @Autowired
+        FoodRepository foodRepo;
+
 
         @GetMapping("/GetAllAdmins")
         public List<AdminModel> GetAdmin(){
@@ -29,17 +32,6 @@ public class AdminController {
                 List<AdminModel> admin = adminRepo.findAll();
                 return admin;
         }
-
-
-
-
-        @GetMapping("/GetAllRestaurants")
-        public List<RestaurantModel> GetRestaurant(){
-                List<RestaurantModel> restaurants = restaurantRepo.findAll();
-                return restaurants;
-        }
-
-
 
 
         // Creates a new restaurant
@@ -69,7 +61,7 @@ public class AdminController {
         }
 
         //Retrieves restaurant list with info by using search string (optional)
-        @GetMapping(path = "/restaurantlist")
+        @GetMapping(path = "/restaurants")
         public ResponseEntity<List<RestaurantModel>> getRestaurants(@RequestParam(required = false) String searchString){
 
                 try{
@@ -94,13 +86,65 @@ public class AdminController {
         }
 
 
-
-
         //Creates a food item
+        @PostMapping(path = "/restaurant/{id}/fooditem")
+        public ResponseEntity<FoodModel> createFoodItem(@RequestBody FoodModel foodItem){
+                try{
+                        FoodModel newFoodItem = new FoodModel(foodItem.getFoodName(), foodItem.getFoodPrice(), foodItem.getDescription(), foodItem.getAdminID());
+                        foodRepo.save(newFoodItem);
+                        return new ResponseEntity<>(newFoodItem, HttpStatus.CREATED);
+                }catch (Exception e){
+                        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+        }
+
 
         //Deletes a food item
+//        @DeleteMapping(path = "/restaurant/{id}/fooditem/{foodid}")
+//        public ResponseEntity<HttpStatus> deleteFoodItem(@PathVariable("id") long restaurantId, @PathVariable("foodid") long foodId){
+//
+//
+//                try{
+//                        List<RestaurantModel> restaurants = new ArrayList<RestaurantModel>();
+//                        restaurantRepo.findAll().forEach(restaurants::add);
+//
+//                        restaurants.get()
+//                }
+//
+//
+//                try{
+//                        foodRepo.deleteById(id);
+//                        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//                }
+//                catch(Exception e){
+//                        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//                }
+//        }
 
 
+        //Retrives the foodlist
+        @GetMapping(path = "/restaurant/{id}/foodlist")
+        public ResponseEntity<List<FoodModel>> getFoodItems(@RequestParam(required = false) String searchString){
+
+                try{
+                        List<FoodModel> foodItems = new ArrayList<FoodModel>();
+
+                        if(searchString == null){
+                                foodRepo.findAll().forEach(foodItems::add);
+                        }
+                        else {
+                                foodRepo.findFoodModelByFoodNameContainingIgnoreCase(searchString).forEach(foodItems::add);
+
+                        }
+                        if(foodItems.isEmpty()){
+                                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                        }
+                        return new ResponseEntity<>(foodItems, HttpStatus.OK);
+                }
+                catch (Exception e){
+                        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+        }
 
 
 

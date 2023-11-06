@@ -1,6 +1,10 @@
 package com.example.eatmania.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "RESTAURANT")
@@ -10,7 +14,7 @@ public class RestaurantModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "restaurant_id")
-    private long id;
+    private long restaurantId;
 
     @Column(name = "Name")
     private String name;
@@ -30,6 +34,22 @@ public class RestaurantModel {
     @Column(name = "Website")
     private String website;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<FoodModel> foodItems = new ArrayList<>();
+
+    public List<FoodModel> getFoodItems(){
+        return foodItems;
+    }
+
+    public void addFoodItem(FoodModel foodItem){
+        this.foodItems.add(foodItem);
+    }
+
+    public void removeFoodItem(FoodModel foodItem){
+        this.foodItems.remove(foodItem);
+    }
+
     public RestaurantModel(){};
 
     public RestaurantModel(String name, String phoneNumber, String cuisineType, double rating, String description, String website) {
@@ -41,10 +61,8 @@ public class RestaurantModel {
         this.website = website;
     }
 
-
-
-    public long getId() {
-        return id;
+    public long getRestaurantId() {
+        return restaurantId;
     }
 
     public String getName() {
