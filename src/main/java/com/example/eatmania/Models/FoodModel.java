@@ -1,6 +1,7 @@
 package com.example.eatmania.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -44,7 +45,6 @@ public class FoodModel {
     }
 
     public FoodModel() {
-
     }
 
     public Long getFoodId() {

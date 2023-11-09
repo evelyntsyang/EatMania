@@ -1,6 +1,7 @@
 package com.example.eatmania.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class RestaurantModel {
         this.website = website;
     }
 
+
     public long getRestaurantId() {
         return restaurantId;
     }
@@ -111,5 +113,9 @@ public class RestaurantModel {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public void setFoodItems(List<FoodModel> foodItems) {
+        this.foodItems = foodItems;
     }
 }
