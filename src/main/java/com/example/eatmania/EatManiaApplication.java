@@ -22,7 +22,7 @@ public class EatManiaApplication {
 
 
 	@Bean
-	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository){
+	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository,UserRepository userRepo){
 
 		return (arg) -> {
 
@@ -61,10 +61,8 @@ public class EatManiaApplication {
 			restaurantModelList.add(new RestaurantModel("Healthy Bites","6044472581","Mexican",4.5,"Healthy Bites offers a delightful fusion of Italian and Mexican flavors. Our dishes are prepared with fresh ingredients, providing you with a nutritious twist on traditional favorites. Savor the perfect balance of tastes and textures.","www.healthybites.com"));
 			restaurantModelList.add(new RestaurantModel("Sweet Sushi","6044421385","Asian",4.0,"Sweet Sushi presents a playful take on traditional Asian cuisine. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. It's a unique and whimsical culinary experience for your palate.","www.sweetsushi.com"));
 
-			//when i save the restaurant data, shows error
+
 			restaurantRepo.saveAll(restaurantModelList);
-
-
 
 
 
@@ -78,6 +76,11 @@ public class EatManiaApplication {
 			AdminModelList.add(new AdminModel("Evelyn","Yang","yangt16@studentdouglascollege.ca"));
 
 			adminRepository.saveAll(AdminModelList);
+
+
+			//insert user data
+
+
 		};
 	}
 
