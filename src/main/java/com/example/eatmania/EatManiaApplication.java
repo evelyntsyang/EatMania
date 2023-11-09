@@ -23,7 +23,7 @@ public class EatManiaApplication {
 
 
 	@Bean
-	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository){
+	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository,UserRepository userRepo){
 
 		return (arg) -> {
 
@@ -115,6 +115,11 @@ public class EatManiaApplication {
 			AdminModelList.add(new AdminModel("Evelyn","Yang","yangt16@studentdouglascollege.ca"));
 
 			adminRepository.saveAll(AdminModelList);
+
+
+			//insert user data
+
+
 		};
 	}
 
