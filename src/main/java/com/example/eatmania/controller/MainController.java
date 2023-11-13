@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class MainController {
@@ -54,29 +54,26 @@ public class MainController {
  @Autowired
     UserRepository userRepo;
 
-    @PostMapping("/register/{email}/{password}/{firstname}/{lastname}/{address}/{phonenumber}")
-    public String RegisterExample (@PathVariable String email, @PathVariable String password,@PathVariable String firstname,
-                                   @PathVariable String lastname, @PathVariable String address, @PathVariable String phonenumber){
-
-
-        if( email != null  && password != null ){
-
-            UserModel userModel1 = new UserModel(email, password,firstname,lastname,address,phonenumber);
+    @PostMapping("/register")
+    public ResponseEntity<String> registerExample(@RequestBody UserModel userModel) {
+        if (userModel != null && userModel.getUserEmail() != null && userModel.getPassword() != null) {
+            String email = userModel.getUserEmail();
 
             List<UserModel> userList = userRepo.findAll();
 
-            for(int i = 0 ; i < userList.size(); i++){
-                if( userList.get(i).getUserEmail().equals(email)){
-                    return "The account has already existed";
+            for (UserModel user : userList) {
+                if (user.getUserEmail().equals(email)) {
+                    return ResponseEntity.badRequest().body("The account has already existed");
                 }
             }
 
-            userRepo.save(userModel1);
-            return "Your account has been successful created with " + email + "and" + password;
-
+            userRepo.save(userModel);
+            return ResponseEntity.ok("Your account has been successfully created with " + email + " and " + userModel.getPassword());
         }
-        return "Email or password is missing  ";
+        return ResponseEntity.badRequest().body("Email or password is missing");
     }
+
+
 
 
     @Autowired
@@ -92,14 +89,11 @@ public class MainController {
 
 
 
-
-
-
     @PostMapping("/register1")
     public ResponseEntity<String> register(@RequestBody List<UserModel> userList1) {
 
 
-        // You can perform validation and other business logic here if needed
+        //not used
 
         // userRepo.saveAll(usersList1); // Save the list of UserModel instances to the database
 
@@ -108,17 +102,51 @@ public class MainController {
 
 
 
+    //not working
     @PostMapping("/foodsearch/{foodname}")
     public ResponseEntity<?> searchFood(@PathVariable String foodname) {
 
 
-        if( foodname != null  ){
+        try {
+            if (foodname != null) {
+                List<FoodModel> matchingFoods = new ArrayList<>();
+                List<FoodModel> foodList = foodRepo.findAll();
+
+                for (FoodModel food : foodList) {
+                    if (food.getFoodName().toLowerCase().contains(foodname.toLowerCase())) {
+                        matchingFoods.add(food);
+                    }
+                }
+
+                if (!matchingFoods.isEmpty()) {
+                    return ResponseEntity.ok(matchingFoods);
+                } else {
+                    return ResponseEntity.notFound().build();
+                }
+            }
+
+            return ResponseEntity.badRequest().body("Please enter a valid food name");
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception for debugging purposes
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An internal server error occurred.");
+        }
+    }
+
+
+
+
+    //not working
+    @PostMapping("/foodsearch1/{foodprice}")
+    public ResponseEntity<?> searchPrice(@PathVariable double foodprice){
+
+
+        if( foodprice >0  ){
             List<FoodModel> matchingFoods = new ArrayList<>();
             List<FoodModel> foodList = foodRepo.findAll();
 
             for(FoodModel food : foodList){
-                if (food.getFoodName().toLowerCase().contains(foodname.toLowerCase())) {
-                    matchingFoods.add(food); // Collect all matching food items
+                if (Double.compare(food.getFoodPrice(), foodprice) == 0) {
+                    matchingFoods.add(food);
                 }
             }
 
@@ -128,13 +156,10 @@ public class MainController {
                 return ResponseEntity.notFound().build(); // Return 404 Not Found if no matches are found
             }
 
-
-
         }
 
-        return ResponseEntity.badRequest().body("Please enter a food name");
+        return ResponseEntity.badRequest().body("Please enter a food price ");
     }
-
 
 
 
@@ -147,11 +172,38 @@ public class MainController {
 
 
 
+    //http://localhost:8080/api/searchFoodByName?foodName=sushi
     @GetMapping("/searchFoodByName")
     public List<FoodModel> searchFoodByName(@RequestParam String foodName) {
         // Use the repository method to search for food by name
         return foodRepo.findFoodModelByFoodNameContainingIgnoreCase(foodName);
     }
 
+
+    //search by price
+    //http://localhost:8080/api/searchByPrice?maxPrice=10
+    @GetMapping("/searchByPrice")
+    public ResponseEntity<?> searchByPrice(@RequestParam double maxPrice) {
+
+        if (maxPrice >= 0) {
+            List<FoodModel> matchingFoods = new ArrayList<>();
+            List<FoodModel> foodList = foodRepo.findAll();
+
+            for (FoodModel food : foodList) {
+                if (food.getFoodPrice() <= maxPrice) {
+                    matchingFoods.add(food);
+                }
+            }
+
+            if (!matchingFoods.isEmpty()) {
+                return ResponseEntity.ok(matchingFoods);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No food items found within the specified price range.");
+            }
+        }
+
+        return ResponseEntity.badRequest().body("Please enter a valid food price");
+        //search by reivew
+    }
 
 }
