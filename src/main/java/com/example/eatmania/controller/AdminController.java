@@ -13,7 +13,7 @@ import java.util.ListResourceBundle;
 import java.util.Optional;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

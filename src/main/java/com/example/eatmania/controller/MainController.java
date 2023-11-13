@@ -79,14 +79,29 @@ public class MainController {
     @Autowired
     ReviewRepository reviewRepo;
     @PostMapping("/review")
-    public ResponseEntity<String> addReview(@RequestBody ReviewModel reviewModel){
+    public ResponseEntity<String> addReview(@RequestBody ReviewModel newReview){
 
-        ReviewModel savedReview = reviewRepo.save(reviewModel);
+        ReviewModel savedReview = reviewRepo.save(newReview);
         return ResponseEntity.ok("Your review has been submitted. Thank you for your contribution.");
 
 
     }
 
+
+    @PostMapping("{userid}/fooditem/{id}/review")
+    public ResponseEntity<ReviewModel> addReview2(@RequestBody ReviewModel aReview, @PathVariable("userid") long userid,@PathVariable ("id") long id){
+        try {
+            ReviewModel newReview = new ReviewModel(aReview.getRating(), aReview.getReview_content());
+            newReview.setFood(foodRepo.findFoodModelByFoodId(id).get());
+            newReview.setUser_id(userRepo.getReferenceById(userid));
+            reviewRepo.save(newReview);
+            return new ResponseEntity<>(newReview , HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
+    }
 
 
     @PostMapping("/register1")
