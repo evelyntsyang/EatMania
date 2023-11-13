@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,10 @@ public class FoodModel {
     @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private RestaurantModel restaurant;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<ReviewModel> reviews = new ArrayList<>();
 
     public FoodModel(String foodName, double foodPrice, String description, Long adminID) {
         this.foodName = foodName;

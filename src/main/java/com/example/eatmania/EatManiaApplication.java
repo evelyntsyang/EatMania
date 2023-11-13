@@ -23,7 +23,7 @@ public class EatManiaApplication {
 
 
 	@Bean
-	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository,UserRepository userRepo){
+	ApplicationRunner init (FoodRepository foodRepo, RestaurantRepository restaurantRepo, AdminRepository adminRepository,UserRepository userRepo, ReviewRepository reviewRepo){
 
 		return (arg) -> {
 
@@ -118,6 +118,25 @@ public class EatManiaApplication {
 
 
 			//insert user data
+			userRepo.deleteAll();
+			userRepo.resetId();
+			UserModel u1 = new UserModel("daligutierrez@gmail.com", "12345", "Daniza", "Gutierrez", "1111 haro", "234567");
+			userRepo.save(u1);
+
+			//insert reviews
+			reviewRepo.deleteAll();
+			reviewRepo.resetId();
+
+
+			List<ReviewModel> reviewsList = new ArrayList<>();
+
+			ReviewModel rv1 = new ReviewModel(4.5F, "This burger was delicious, the best in town");
+			rv1.setFood(f2);
+			rv1.setUser_id(u1);
+
+			reviewsList.add(rv1);
+
+			reviewRepo.saveAll(reviewsList);
 
 
 		};

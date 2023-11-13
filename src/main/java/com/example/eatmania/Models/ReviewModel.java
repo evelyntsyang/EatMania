@@ -1,9 +1,11 @@
 package com.example.eatmania.Models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "ReviewList")
+@Table(name = "review_list")
 public class ReviewModel {
 
     @Id
@@ -14,8 +16,15 @@ public class ReviewModel {
     @JoinColumn(name = "user_id")
     private UserModel user_id;
 
-    @Column(name = "food_id")
-    private String food_id;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "food_id", referencedColumnName = "food_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FoodModel food;
+
+
+//    @Column(name = "food_id")
+//    private String food_id;
 
     @Column(name = "rating")
     private float  rating;
@@ -23,19 +32,34 @@ public class ReviewModel {
     @Column(name = "review_content")
     private String review_content;
 
-    public ReviewModel(UserModel user_id, String food_id, float  rating, String review_content) {
-        this.user_id = user_id;
-        this.food_id = food_id;
+//    public ReviewModel(UserModel user_id, float  rating, String review_content) {
+//        this.user_id = user_id;
+////        this.food_id = food_id;
+//        this.rating = rating;
+//        this.review_content = review_content;
+//    }
+//
+//    public ReviewModel(int user_id, int food_id, float rating, String review_content) {
+//
+//    }
+
+
+    public ReviewModel(float rating, String review_content) {
         this.rating = rating;
         this.review_content = review_content;
     }
 
-    public ReviewModel(int user_id, int food_id, float rating, String reviewcontent) {
+    public ReviewModel() {
 
     }
 
-    public ReviewModel() {
 
+    public FoodModel getFood() {
+        return food;
+    }
+
+    public void setFood(FoodModel food) {
+        this.food = food;
     }
 
 
@@ -47,13 +71,13 @@ public class ReviewModel {
         this.user_id = user_id;
     }
 
-    public String getFood_id() {
-        return food_id;
-    }
-
-    public void setFood_id(String food_id) {
-        this.food_id = food_id;
-    }
+//    public String getFood_id() {
+//        return food_id;
+//    }
+//
+//    public void setFood_id(String food_id) {
+//        this.food_id = food_id;
+//    }
 
     public float getRating() {
         return rating;

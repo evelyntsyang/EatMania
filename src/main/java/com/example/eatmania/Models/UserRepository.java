@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
-
+    @Modifying
+    @Transactional
+    @Query(value = "ALTER TABLE user_list AUTO_INCREMENT = 1;", nativeQuery = true)
+    void resetId();
 }
 
 
