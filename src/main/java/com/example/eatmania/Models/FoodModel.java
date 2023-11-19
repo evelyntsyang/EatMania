@@ -28,6 +28,10 @@ public class FoodModel {
     @Column(name = "description")  // Define the column name for description
     private String description;
 
+    @Column(name = "rating") // Define the column for the rating
+    private Double rating = 0.0;
+
+
     @Column(name = "adminID")  // Define the column name for adminid
     private Long adminID;
 
@@ -49,6 +53,7 @@ public class FoodModel {
     }
 
     public FoodModel() {
+
     }
 
     public Long getFoodId() {
@@ -85,6 +90,14 @@ public class FoodModel {
         return restaurant;
     }
 
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
     public void setRestaurant(RestaurantModel restaurant) {
         this.restaurant = restaurant;
     }
@@ -93,4 +106,7 @@ public class FoodModel {
         return adminID;
     }
 
+    public List<ReviewModel> getReviews() {
+        return reviews;
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -87,19 +88,54 @@ public class MainController {
 
     }
 
-
+    //creates a review for a foodItem
     @PostMapping("{userid}/fooditem/{id}/review")
     public ResponseEntity<ReviewModel> addReview2(@RequestBody ReviewModel aReview, @PathVariable("userid") long userid,@PathVariable ("id") long id){
+        double sum=0;
+        double average = 0;
+
         try {
+
             ReviewModel newReview = new ReviewModel(aReview.getRating(), aReview.getReview_content());
             newReview.setFood(foodRepo.findFoodModelByFoodId(id).get());
             newReview.setUser_id(userRepo.getReferenceById(userid));
             reviewRepo.save(newReview);
+
+            List<ReviewModel> reviewsList = reviewRepo.getReviewModelByFood_FoodId(id);
+
+                for (int i=0; i<reviewsList.size();i++) {
+                    sum = sum + reviewsList.get(i).getRating();
+                }
+                average = sum / reviewsList.size();
+
+                FoodModel foodItem = foodRepo.findFoodModelByFoodId(id).get();
+                foodItem.setRating(Math.round(average * 10)/10.0);
+                foodRepo.save(foodItem);
+
             return new ResponseEntity<>(newReview , HttpStatus.CREATED);
+
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
+    //Gets all the reviews for a foodItem
+    @GetMapping("fooditem/{id}/reviews")
+    public ResponseEntity<List<ReviewModel>> seeAllReviews(@PathVariable("id") long foodid){
+
+        List<ReviewModel> reviewsList = new ArrayList<>();
+
+        try{
+            Optional<FoodModel> foodItem = foodRepo.findFoodModelByFoodId(foodid);
+            if(foodItem.isPresent()){
+                reviewsList = foodItem.get().getReviews();
+
+            }
+            return new ResponseEntity<>(reviewsList, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
 
@@ -139,7 +175,6 @@ public class MainController {
                     return ResponseEntity.notFound().build();
                 }
             }
-
             return ResponseEntity.badRequest().body("Please enter a valid food name");
         } catch (Exception e) {
             e.printStackTrace(); // Log the exception for debugging purposes

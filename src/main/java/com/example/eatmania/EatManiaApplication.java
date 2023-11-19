@@ -65,9 +65,10 @@ public class EatManiaApplication {
 			f1.setRestaurant(r1);
 			foodModelList.add(f1);
 
-			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.",2L);
+			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.", 2L);
 			f2.setRestaurant(r4);
 			foodModelList.add(f2);
+
 
 			FoodModel f3 = new FoodModel("Pasta", 12,"Dive into a world of culinary delight with the Italian Dream Pasta. Handcrafted by the skilled chefs at Italian Delight,this dish features al dente pasta, smothered in a luscious, secret-recipe tomato sauce, and garnished with Parmesan cheese.",1L);
 			f3.setRestaurant(r4);
@@ -105,6 +106,7 @@ public class EatManiaApplication {
 
 
 
+
 //			insert admin data
 
 			adminRepository.deleteAll();
@@ -136,7 +138,14 @@ public class EatManiaApplication {
 
 			reviewsList.add(rv1);
 
+			ReviewModel rv2 = new ReviewModel(3.5F, "Good but not as great as people say! ");
+			rv2.setFood(f2);
+			rv2.setUser_id(u1);
+
+			reviewsList.add(rv2);
+
 			reviewRepo.saveAll(reviewsList);
+
 
 
 		};
