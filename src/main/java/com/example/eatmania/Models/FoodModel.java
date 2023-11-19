@@ -35,6 +35,9 @@ public class FoodModel {
     @Column(name = "adminID")  // Define the column name for adminid
     private Long adminID;
 
+    @Column(name = "image") //Define the column for the picture
+    private String image;
+
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
@@ -45,11 +48,12 @@ public class FoodModel {
     @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<ReviewModel> reviews = new ArrayList<>();
 
-    public FoodModel(String foodName, double foodPrice, String description, Long adminID) {
+    public FoodModel(String foodName, double foodPrice, String description, Long adminID, String image) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.description = description;
         this.adminID = adminID;
+        this.image = image;
     }
 
     public FoodModel() {
@@ -101,12 +105,19 @@ public class FoodModel {
     public void setRestaurant(RestaurantModel restaurant) {
         this.restaurant = restaurant;
     }
-
     public long getAdminID() {
         return adminID;
     }
 
     public List<ReviewModel> getReviews() {
         return reviews;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
