@@ -123,6 +123,12 @@ public class EatManiaApplication {
 			UserModel u1 = new UserModel("daligutierrez@gmail.com", "12345", "Daniza", "Gutierrez", "1111 haro", "234567");
 			userRepo.save(u1);
 
+			UserModel u2 = new UserModel("test@test.com", "123456", "TEST", "TEST", "TEST", "TEST");
+			userRepo.save(u2);
+
+			UserModel u3 = new UserModel("admin@user.com", "123456", "admin", "admin", "admin", "admin");
+			userRepo.save(u3);
+
 			//insert reviews
 			reviewRepo.deleteAll();
 			reviewRepo.resetId();
