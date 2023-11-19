@@ -139,7 +139,7 @@ public class AdminController {
         public ResponseEntity<FoodModel> createFoodItem(@RequestBody FoodModel foodItem, @PathVariable ("id") long id){
 
                 try {
-                        FoodModel newFood = new FoodModel(foodItem.getFoodName(), foodItem.getFoodPrice(), foodItem.getDescription(), foodItem.getAdminID());
+                        FoodModel newFood = new FoodModel(foodItem.getFoodName(), foodItem.getFoodPrice(), foodItem.getDescription(), foodItem.getAdminID(), foodItem.getImage());
                         newFood.setRestaurant(restaurantRepo.findRestaurantModelByRestaurantId(id).get());
                         foodRepo.save(newFood);
                         return new ResponseEntity<>(newFood , HttpStatus.CREATED);
