@@ -48,12 +48,13 @@ public class FoodModel {
     @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<ReviewModel> reviews = new ArrayList<>();
 
-    public FoodModel(String foodName, double foodPrice, String description, Long adminID, String image) {
+    public FoodModel(String foodName, double foodPrice, String description, Long adminID, String image, Double rating) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.description = description;
         this.adminID = adminID;
         this.image = image;
+        this.rating = rating;
     }
 
     public FoodModel() {
