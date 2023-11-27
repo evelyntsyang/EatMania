@@ -41,6 +41,9 @@ public class EatManiaApplication {
 			RestaurantModel r5 = new RestaurantModel("Crispy Delights","2369045655","Mexican",3.9,"Crispy Delights invites you to savor the flavors of Mexico in every bite. Our menu features a symphony of crispy textures and zesty tastes. Each dish is a delight that will transport you to the heart of Mexican cuisine.","www.crispydelights.com");
 			RestaurantModel r6 = new RestaurantModel("Healthy Bites","6044472581","Mexican",4.5,"Healthy Bites offers a delightful fusion of Italian and Mexican flavors. Our dishes are prepared with fresh ingredients, providing you with a nutritious twist on traditional favorites. Savor the perfect balance of tastes and textures.","www.healthybites.com");
 			RestaurantModel r7 = new RestaurantModel("Sweet Sushi","6044421385","Asian",4.0,"Sweet Sushi presents a playful take on traditional Asian cuisine. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. It's a unique and whimsical culinary experience for your palate.","www.sweetsushi.com");
+			RestaurantModel r8 = new RestaurantModel("Smokehouse Grill", "555-789-1234", "American", 4.5, "Experience the essence of American barbecue at Smokehouse Grill. Our menu boasts a selection of slow-smoked meats, from tender pulled pork to flavorful brisket. Accompanied by classic sides like coleslaw and baked beans. ", "www.smokehousegrill.com");
+			RestaurantModel r9 = new RestaurantModel("City Diner", "555-987-6543", "American", 4.2, "City Diner offers a nostalgic journey through classic American diner fare. From hearty breakfasts to juicy burgers and hand-spun milkshakes, our menu brings the timeless flavors of comfort food to the heart of the city.", "www.citydiner.com");
+			RestaurantModel r10 = new RestaurantModel("Sakura Palace", "555-123-4567", "Asian", 4.3, "Embark on a culinary journey at Sakura Palace, where traditional Asian flavors meet contemporary elegance. Our menu features a fusion of Japanese, Chinese, and Thai cuisines, offering a diverse selection of sushi, dim sum, and flavorful stir-fries. ", "www.sakurapalace.com");
 
 			restaurantModelList.add(r1);
 			restaurantModelList.add(r2);
@@ -49,7 +52,9 @@ public class EatManiaApplication {
 			restaurantModelList.add(r5);
 			restaurantModelList.add(r6);
 			restaurantModelList.add(r7);
-
+			restaurantModelList.add(r8);
+			restaurantModelList.add(r9);
+			restaurantModelList.add(r10);
 
 			restaurantRepo.saveAll(restaurantModelList);
 
@@ -61,11 +66,19 @@ public class EatManiaApplication {
 
 //			insert food options and assign restaurants
 
-			FoodModel f1 = new FoodModel("Pizza", 10,"best italian pizza in town",1L, "https://bit.ly/3MRw5Zj");
+			FoodModel f1 = new FoodModel("Beef Pizza", 10,"best italian pizza in town",1L, "https://bit.ly/3MRw5Zj");
 			f1.setRestaurant(r1);
 			foodModelList.add(f1);
 
-			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.", 2L, "https://bit.ly/3G7yxqx");
+			FoodModel f11 = new FoodModel("Veggie Pizza", 14,"Fresh garden veggies atop a crispy crust and melty mozzarella, a flavorful choice for vegetarians.\n",1L, "https://bit.ly/3MRw5Zj");
+			f11.setRestaurant(r1);
+			foodModelList.add(f11);
+
+			FoodModel f12 = new FoodModel("Chicken Pizza", 12,"Juicy seasoned chicken on a zesty tomato base, topped with cheese—satisfying and flavorful for chicken enthusiasts.",1L, "https://bit.ly/3MRw5Zj");
+			f12.setRestaurant(r1);
+			foodModelList.add(f12);
+
+			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.", 1L, "https://bit.ly/3G7yxqx");
 			f2.setRestaurant(r4);
 			foodModelList.add(f2);
 
@@ -87,7 +100,7 @@ public class EatManiaApplication {
 			foodModelList.add(f6);
 
 			FoodModel f7 = new FoodModel("Pasta", 20, "Pasta Fresh presents Fresh Fusion Pasta, a culinary masterpiece that combines the flavors of the world. Savory meats, vibrant vegetables, and a symphony of sauces unite to create a culinary journey you won't soon forget.",1L, "https://bit.ly/3sIecVQ");
-			f7.setRestaurant(r4);
+			f7.setRestaurant(r1);
 			foodModelList.add(f7);
 
 			FoodModel f8 = new FoodModel("Burger", 6, "Burger Eats takes you on a journey to Burger Bliss. Sink your teeth into a sumptuous burger that's a taste explosion of high-quality ingredients and secret spices, all served with a side of culinary happiness.",1L, "https://bit.ly/3R7zt4P");
@@ -98,9 +111,53 @@ public class EatManiaApplication {
 			f9.setRestaurant(r6);
 			foodModelList.add(f9);
 
-			FoodModel f10 = new FoodModel("sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "https://bit.ly/47pPZTh");
+			FoodModel f10 = new FoodModel("California Sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "https://bit.ly/47pPZTh");
 			f10.setRestaurant(r7);
 			foodModelList.add(f10);
+
+			FoodModel f13 = new FoodModel("Beef Pizza", 12, "Indulge in our Beef Supreme Pizza, a carnivore's delight! Loaded with seasoned beef, savory sauce, melted cheese, and your favorite toppings, every slice is a flavorful journey.", 1L, "https://bit.ly/3tbG4Pz");
+			f13.setRestaurant(r8);
+			foodModelList.add(f13);
+
+			FoodModel f14 = new FoodModel("Beef Pizza", 14, "Enjoy the classic flavor of our Beef Pizza at City Diner. Succulent seasoned beef, tangy tomato sauce, and gooey melted cheese come together on a perfect crust. ", 1L, "https://bit.ly/3toFLkm");
+			f14.setRestaurant(r9);
+			foodModelList.add(f14);
+
+			FoodModel f15 = new FoodModel("Chicken Pizza", 13, "Savor the flavor of our Grilled Chicken Pizza at City Diner. Tender grilled chicken, a medley of fresh vegetables, and a blend of cheeses make every bite a delightful experience.", 1L, "https://bit.ly/3pVKC9F");
+			f15.setRestaurant(r9);
+			foodModelList.add(f15);
+
+			FoodModel f16 = new FoodModel("Veggie Pizza", 9, "Delight in the freshness of our Garden Veggie Pizza at Smokehouse Grill. A medley of colorful vegetables, including bell peppers, tomatoes, onions, and olives.", 1L, "https://bit.ly/3GIReUR");
+			f16.setRestaurant(r8);
+			foodModelList.add(f16);
+
+			FoodModel f17 = new FoodModel("Burger", 9, "A juicy beef patty, fresh lettuce, ripe tomatoes, and a special sauce, all sandwiched between a soft bun. It's a timeless American favorite that promises a satisfying bite.", 1L, "https://bit.ly/3pV47ei");
+			f17.setRestaurant(r8);
+			foodModelList.add(f17);
+
+			FoodModel f18 = new FoodModel("Pasta", 12, "Experience the fusion of Asian flavors with our Asian Fusion Pasta at Sakura Palace. Thin noodles tossed in a savory blend of soy sauce, ginger, and garlic, accompanied by fresh vegetables and your choice of protein.", 1L, "https://bit.ly/3GSDpZb");
+			f18.setRestaurant(r10);
+			foodModelList.add(f18);
+
+			FoodModel f19 = new FoodModel("California Sushi", 15, "Indulge in the freshness of our California Roll at Ocean Breeze Sushi. A delightful combination of crab, avocado, and cucumber wrapped in seasoned rice and seaweed. Served with soy sauce and pickled ginger.", 1L, "https://bit.ly/3GEtRj2");
+			f19.setRestaurant(r4);
+			foodModelList.add(f19);
+
+			FoodModel f20 = new FoodModel("California Sushi", 8, "Embark on a culinary journey with our California Dream Roll at Sakura Palace. Succulent crab, creamy avocado, and crunchy cucumber come together in a perfect harmony of flavors.", 1L, "https://bit.ly/3tb5XT0");
+			f20.setRestaurant(r10);
+			foodModelList.add(f20);
+
+			FoodModel f21 = new FoodModel("Miso Ramen", 16, "Savor the authentic taste of our Miso Ramen Bowl at Ramen Haven. Rich, savory broth, tender noodles, and a medley of fresh vegetables create a comforting and flavorful experience.", 1L, "https://bit.ly/3tf9YXs");
+			f21.setRestaurant(r2);
+			foodModelList.add(f21);
+
+			FoodModel f22 = new FoodModel("Pork Taco", 5, "Topped with fresh salsa, cilantro, and a hint of lime, each bite is a fiesta of taste sensations.", 1L, "https://bit.ly/3GBsPQt");
+			f22.setRestaurant(r3); // Assuming r3 is the instance of the restaurant with ID 3
+			foodModelList.add(f22);
+
+			FoodModel f23 = new FoodModel("Grilled Pork Taco", 10, "Experience the savory delight of our Grilled Pork Taco at Taqueria Fiesta. Juicy pork, expertly grilled and seasoned, is folded into a soft corn tortilla. Garnished with fresh toppings like salsa, onions, and cilantro", 1L, "https://bit.ly/3tFMMor");
+			f23.setRestaurant(r6); // Assuming r6 is the instance of the restaurant with ID 6
+			foodModelList.add(f23);
 
 			foodRepo.saveAll(foodModelList);
 
