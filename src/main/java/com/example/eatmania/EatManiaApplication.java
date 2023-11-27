@@ -70,11 +70,11 @@ public class EatManiaApplication {
 			f1.setRestaurant(r1);
 			foodModelList.add(f1);
 
-			FoodModel f11 = new FoodModel("Veggie Pizza", 14,"Fresh garden veggies atop a crispy crust and melty mozzarella, a flavorful choice for vegetarians.\n",1L, "https://bit.ly/3MRw5Zj");
+			FoodModel f11 = new FoodModel("Veggie Pizza", 14,"Fresh garden veggies atop a crispy crust and melty mozzarella, a flavorful choice for vegetarians.\n",1L, "http://surl.li/npjmx");
 			f11.setRestaurant(r1);
 			foodModelList.add(f11);
 
-			FoodModel f12 = new FoodModel("Chicken Pizza", 12,"Juicy seasoned chicken on a zesty tomato base, topped with cheese—satisfying and flavorful for chicken enthusiasts.",1L, "https://bit.ly/3MRw5Zj");
+			FoodModel f12 = new FoodModel("Chicken Pizza", 12,"Juicy seasoned chicken on a zesty tomato base, topped with cheese—satisfying and flavorful for chicken enthusiasts.",1L, "http://surl.li/npksg");
 			f12.setRestaurant(r1);
 			foodModelList.add(f12);
 
@@ -91,11 +91,11 @@ public class EatManiaApplication {
 			f4.setRestaurant(r2);
 			foodModelList.add(f4);
 
-			FoodModel f5 = new FoodModel("Taco fish", 7, "Taco Express serves up an explosion of flavor with its Tantalizing Tacos. Crispy shells cradle a medley of savory meats, fresh salsa, and zesty toppings, delivering a fiesta for your taste buds.",1L, "https://bit.ly/40JQyF4");
+			FoodModel f5 = new FoodModel("Fish Taco", 7, "Taco Express serves up an explosion of flavor with its Tantalizing Tacos. Crispy shells cradle a medley of savory meats, fresh salsa, and zesty toppings, delivering a fiesta for your taste buds.",1L, "http://surl.li/npkzi");
 			f5.setRestaurant(r3);
 			foodModelList.add(f5);
 
-			FoodModel f6 = new FoodModel("Taco fish", 8, "Experience a healthier take on the classic taco with Healthy Crunch Taco.At Healthy Bites, you'll enjoy the perfect blend of fresh ingredients, whole-grain shells, and a dash of flavor that brings a nutritious twist to your favorite dish.",1L, "https://bit.ly/3QMaxOT");
+			FoodModel f6 = new FoodModel("Fish Taco ", 8, "Experience a healthier take on the classic taco with Healthy Crunch Taco.At Healthy Bites, you'll enjoy the perfect blend of fresh ingredients, whole-grain shells, and a dash of flavor that brings a nutritious twist to your favorite dish.",1L, "https://bit.ly/3QMaxOT");
 			f6.setRestaurant(r5);
 			foodModelList.add(f6);
 
@@ -111,53 +111,69 @@ public class EatManiaApplication {
 			f9.setRestaurant(r6);
 			foodModelList.add(f9);
 
-			FoodModel f10 = new FoodModel("California Sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "https://bit.ly/47pPZTh");
+			FoodModel f10 = new FoodModel("California Sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "http://surl.li/npjxs");
 			f10.setRestaurant(r7);
 			foodModelList.add(f10);
 
-			FoodModel f13 = new FoodModel("Beef Pizza", 12, "Indulge in our Beef Supreme Pizza, a carnivore's delight! Loaded with seasoned beef, savory sauce, melted cheese, and your favorite toppings, every slice is a flavorful journey.", 1L, "https://bit.ly/3tbG4Pz");
+			FoodModel f13 = new FoodModel("Beef Pizza", 12, "Indulge in our Beef Supreme Pizza, a carnivore's delight! Loaded with seasoned beef, savory sauce, melted cheese, and your favorite toppings, every slice is a flavorful journey.", 1L, "http://surl.li/npktf");
 			f13.setRestaurant(r8);
 			foodModelList.add(f13);
 
-			FoodModel f14 = new FoodModel("Beef Pizza", 14, "Enjoy the classic flavor of our Beef Pizza at City Diner. Succulent seasoned beef, tangy tomato sauce, and gooey melted cheese come together on a perfect crust. ", 1L, "https://bit.ly/3toFLkm");
+			FoodModel f14 = new FoodModel("Beef Pizza", 14, "Enjoy the classic flavor of our Beef Pizza at City Diner. Succulent seasoned beef, tangy tomato sauce, and gooey melted cheese come together on a perfect crust. ", 1L, "http://surl.li/npkun");
 			f14.setRestaurant(r9);
 			foodModelList.add(f14);
 
-			FoodModel f15 = new FoodModel("Chicken Pizza", 13, "Savor the flavor of our Grilled Chicken Pizza at City Diner. Tender grilled chicken, a medley of fresh vegetables, and a blend of cheeses make every bite a delightful experience.", 1L, "https://bit.ly/3pVKC9F");
+			FoodModel f15 = new FoodModel("Chicken Pizza", 13, "Savor the flavor of our Grilled Chicken Pizza at City Diner. Tender grilled chicken, a medley of fresh vegetables, and a blend of cheeses make every bite a delightful experience.", 1L, "http://surl.li/npksg");
 			f15.setRestaurant(r9);
 			foodModelList.add(f15);
 
-			FoodModel f16 = new FoodModel("Veggie Pizza", 9, "Delight in the freshness of our Garden Veggie Pizza at Smokehouse Grill. A medley of colorful vegetables, including bell peppers, tomatoes, onions, and olives.", 1L, "https://bit.ly/3GIReUR");
+			FoodModel f16 = new FoodModel("Veggie Pizza", 9, "Delight in the freshness of our Garden Veggie Pizza at Smokehouse Grill. A medley of colorful vegetables, including bell peppers, tomatoes, onions, and olives.", 1L, "http://surl.li/npkrk");
 			f16.setRestaurant(r8);
 			foodModelList.add(f16);
 
-			FoodModel f17 = new FoodModel("Burger", 9, "A juicy beef patty, fresh lettuce, ripe tomatoes, and a special sauce, all sandwiched between a soft bun. It's a timeless American favorite that promises a satisfying bite.", 1L, "https://bit.ly/3pV47ei");
+			FoodModel f17 = new FoodModel("Burger", 9, "A juicy beef patty, fresh lettuce, ripe tomatoes, and a special sauce, all sandwiched between a soft bun. It's a timeless American favorite that promises a satisfying bite.", 1L, "http://surl.li/npkqw");
 			f17.setRestaurant(r8);
 			foodModelList.add(f17);
 
-			FoodModel f18 = new FoodModel("Pasta", 12, "Experience the fusion of Asian flavors with our Asian Fusion Pasta at Sakura Palace. Thin noodles tossed in a savory blend of soy sauce, ginger, and garlic, accompanied by fresh vegetables and your choice of protein.", 1L, "https://bit.ly/3GSDpZb");
+			FoodModel f18 = new FoodModel("Pasta", 12, "Experience the fusion of Asian flavors with our Asian Fusion Pasta at Sakura Palace. Thin noodles tossed in a savory blend of soy sauce, ginger, and garlic, accompanied by fresh vegetables and your choice of protein.", 1L, "http://surl.li/npjno");
 			f18.setRestaurant(r10);
 			foodModelList.add(f18);
 
-			FoodModel f19 = new FoodModel("California Sushi", 15, "Indulge in the freshness of our California Roll at Ocean Breeze Sushi. A delightful combination of crab, avocado, and cucumber wrapped in seasoned rice and seaweed. Served with soy sauce and pickled ginger.", 1L, "https://bit.ly/3GEtRj2");
+			FoodModel f19 = new FoodModel("California Sushi", 15, "Indulge in the freshness of our California Roll at Ocean Breeze Sushi. A delightful combination of crab, avocado, and cucumber wrapped in seasoned rice and seaweed. Served with soy sauce and pickled ginger.", 1L, "http://surl.li/npkvd");
 			f19.setRestaurant(r4);
 			foodModelList.add(f19);
 
-			FoodModel f20 = new FoodModel("California Sushi", 8, "Embark on a culinary journey with our California Dream Roll at Sakura Palace. Succulent crab, creamy avocado, and crunchy cucumber come together in a perfect harmony of flavors.", 1L, "https://bit.ly/3tb5XT0");
+			FoodModel f20 = new FoodModel("California Sushi", 8, "Embark on a culinary journey with our California Dream Roll at Sakura Palace. Succulent crab, creamy avocado, and crunchy cucumber come together in a perfect harmony of flavors.", 1L, "http://surl.li/npjxs");
 			f20.setRestaurant(r10);
 			foodModelList.add(f20);
 
-			FoodModel f21 = new FoodModel("Miso Ramen", 16, "Savor the authentic taste of our Miso Ramen Bowl at Ramen Haven. Rich, savory broth, tender noodles, and a medley of fresh vegetables create a comforting and flavorful experience.", 1L, "https://bit.ly/3tf9YXs");
+			FoodModel f21 = new FoodModel("Miso Ramen", 16, "Savor the authentic taste of our Miso Ramen Bowl at Ramen Haven. Rich, savory broth, tender noodles, and a medley of fresh vegetables create a comforting and flavorful experience.", 1L, "http://surl.li/npjop");
 			f21.setRestaurant(r2);
 			foodModelList.add(f21);
 
-			FoodModel f22 = new FoodModel("Pork Taco", 5, "Topped with fresh salsa, cilantro, and a hint of lime, each bite is a fiesta of taste sensations.", 1L, "https://bit.ly/3GBsPQt");
-			f22.setRestaurant(r3); // Assuming r3 is the instance of the restaurant with ID 3
+			FoodModel f22 = new FoodModel("Pork Taco", 5, "Topped with fresh salsa, cilantro, and a hint of lime, each bite is a fiesta of taste sensations.", 1L, "http://surl.li/npkor");
+			f22.setRestaurant(r3);
 			foodModelList.add(f22);
 
-			FoodModel f23 = new FoodModel("Grilled Pork Taco", 10, "Experience the savory delight of our Grilled Pork Taco at Taqueria Fiesta. Juicy pork, expertly grilled and seasoned, is folded into a soft corn tortilla. Garnished with fresh toppings like salsa, onions, and cilantro", 1L, "https://bit.ly/3tFMMor");
+			FoodModel f23 = new FoodModel("Pork Taco", 10, "Experience the savory delight of our Grilled Pork Taco at Taqueria Fiesta. Juicy pork, expertly grilled and seasoned, is folded into a soft corn tortilla.", 1L, "http://surl.li/nplan");
 			f23.setRestaurant(r6); // Assuming r6 is the instance of the restaurant with ID 6
 			foodModelList.add(f23);
+
+			FoodModel f24 = new FoodModel("Sashimi Bowl", 20, "Indulge in the freshness of our Assorted Sashimi Platter at Sweet Sushi. Immerse yourself in a culinary journey with a selection of premium sashimi, including succulent slices of tuna, salmon, and yellowtail.", 1L, "http://surl.li/npkxv");
+			f24.setRestaurant(r7); // Assuming r7 is the instance of the restaurant with ID 7
+			foodModelList.add(f24);
+
+			FoodModel f25 = new FoodModel("Sashimi Bowl", 22, "Experience the artistry of our Chef's Sashimi Selection at Sushi Bliss. Delight in an exquisite array of fresh sashimi, carefully selected and expertly sliced. From buttery tuna to delicate yellowtail.", 1L, "http://surl.li/npjqp");
+			f25.setRestaurant(r2); // Assuming r2 is the instance of the restaurant with ID 2
+			foodModelList.add(f25);
+
+			FoodModel f26 = new FoodModel("Beef Taco", 11, "Satisfy your cravings with our Spicy Beef Taco at Taco Haven. Seasoned beef, cooked to perfection, is nestled in a warm corn tortilla. Topped with spicy salsa, shredded lettuce, and a touch of cheese.", 1L, "http://surl.li/npkwz");
+			f26.setRestaurant(r5); // Assuming r5 is the instance of the restaurant with ID 5
+			foodModelList.add(f26);
+
+			FoodModel f27 = new FoodModel("Beef Taco", 12, "Indulge in the bold flavors of our Grilled Beef Taco at Taqueria Fiesta. Juicy beef, expertly grilled and seasoned, is folded into a soft corn tortilla. Topped with fresh salsa, onions, and cilantro.", 1L, "http://surl.li/npkxf");
+			f27.setRestaurant(r6); // Assuming r6 is the instance of the restaurant with ID 6
+			foodModelList.add(f27);
 
 			foodRepo.saveAll(foodModelList);
 
