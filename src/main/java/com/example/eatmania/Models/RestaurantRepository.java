@@ -25,7 +25,7 @@ public interface RestaurantRepository extends JpaRepository<RestaurantModel, Lon
 
     @Modifying
     @Transactional
-    @Query(value = "ALTER TABLE RESTAURANT AUTO_INCREMENT = 1;", nativeQuery = true)
+    @Query(value = "ALTER TABLE restaurant AUTO_INCREMENT = 1;", nativeQuery = true)
     void resetId();
 
 

@@ -66,7 +66,7 @@ public class EatManiaApplication {
 
 //			insert food options and assign restaurants
 
-			FoodModel f1 = new FoodModel("Beef Pizza", 10,"best italian pizza in town",1L, "https://bit.ly/3MRw5Zj");
+			FoodModel f1 = new FoodModel("Beef Pizza", 10,"best italian pizza in town",1L, "https://bit.ly/3MRw5Zj", 3.0);
 			f1.setRestaurant(r1);
 			foodModelList.add(f1);
 
@@ -78,40 +78,40 @@ public class EatManiaApplication {
 			f12.setRestaurant(r1);
 			foodModelList.add(f12);
 
-			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.", 1L, "https://bit.ly/3G7yxqx");
+			FoodModel f2 = new FoodModel("Burger", 5.0, "Savor the taste of a perfectly grilled gourmet burger from the renowned Burger Joint. The juicy patty, topped with fresh, crisp veggies and special sauce, is a masterpiece in every bite.", 1L, "https://bit.ly/3G7yxqx", 4.0);
 			f2.setRestaurant(r4);
 			foodModelList.add(f2);
 
 
-			FoodModel f3 = new FoodModel("Pasta", 12,"Dive into a world of culinary delight with the Italian Dream Pasta. Handcrafted by the skilled chefs at Italian Delight,this dish features al dente pasta, smothered in a luscious, secret-recipe tomato sauce, and garnished with Parmesan cheese.",1L, "https://bit.ly/47mfbKf");
+			FoodModel f3 = new FoodModel("Pasta", 12,"Dive into a world of culinary delight with the Italian Dream Pasta. Handcrafted by the skilled chefs at Italian Delight,this dish features al dente pasta, smothered in a luscious, secret-recipe tomato sauce, and garnished with Parmesan cheese.",1L, "https://bit.ly/47mfbKf", 3.7);
 			f3.setRestaurant(r4);
 			foodModelList.add(f3);
 
-			FoodModel f4 = new FoodModel("California Sushi", 8,"Sushi Haven presents the Sushi Symphony where every roll is a work of art. Immerse yourself in a harmony of flavors as you enjoy the freshest fish and perfectly seasoned rice, all expertly rolled into delicate pieces of edible art.",1L, "https://bit.ly/49I0dzQ");
+			FoodModel f4 = new FoodModel("California Sushi", 8,"Sushi Haven presents the Sushi Symphony where every roll is a work of art. Immerse yourself in a harmony of flavors as you enjoy the freshest fish and perfectly seasoned rice, all expertly rolled into delicate pieces of edible art.",1L, "https://bit.ly/49I0dzQ", 3.9);
 			f4.setRestaurant(r2);
 			foodModelList.add(f4);
 
-			FoodModel f5 = new FoodModel("Fish Taco", 7, "Taco Express serves up an explosion of flavor with its Tantalizing Tacos. Crispy shells cradle a medley of savory meats, fresh salsa, and zesty toppings, delivering a fiesta for your taste buds.",1L, "http://surl.li/npkzi");
+			FoodModel f5 = new FoodModel("Fish Taco", 7, "Taco Express serves up an explosion of flavor with its Tantalizing Tacos. Crispy shells cradle a medley of savory meats, fresh salsa, and zesty toppings, delivering a fiesta for your taste buds.",1L, "http://surl.li/npkzi", 4.3);
 			f5.setRestaurant(r3);
 			foodModelList.add(f5);
 
-			FoodModel f6 = new FoodModel("Fish Taco ", 8, "Experience a healthier take on the classic taco with Healthy Crunch Taco.At Healthy Bites, you'll enjoy the perfect blend of fresh ingredients, whole-grain shells, and a dash of flavor that brings a nutritious twist to your favorite dish.",1L, "https://bit.ly/3QMaxOT");
+			FoodModel f6 = new FoodModel("Fish Taco ", 8, "Experience a healthier take on the classic taco with Healthy Crunch Taco.At Healthy Bites, you'll enjoy the perfect blend of fresh ingredients, whole-grain shells, and a dash of flavor that brings a nutritious twist to your favorite dish.",1L, "https://bit.ly/3QMaxOT", 4.9);
 			f6.setRestaurant(r5);
 			foodModelList.add(f6);
 
-			FoodModel f7 = new FoodModel("Pasta", 20, "Pasta Fresh presents Fresh Fusion Pasta, a culinary masterpiece that combines the flavors of the world. Savory meats, vibrant vegetables, and a symphony of sauces unite to create a culinary journey you won't soon forget.",1L, "https://bit.ly/3sIecVQ");
+			FoodModel f7 = new FoodModel("Pasta", 20, "Pasta Fresh presents Fresh Fusion Pasta, a culinary masterpiece that combines the flavors of the world. Savory meats, vibrant vegetables, and a symphony of sauces unite to create a culinary journey you won't soon forget.",1L, "https://bit.ly/3sIecVQ", 4.8);
 			f7.setRestaurant(r1);
 			foodModelList.add(f7);
 
-			FoodModel f8 = new FoodModel("Burger", 6, "Burger Eats takes you on a journey to Burger Bliss. Sink your teeth into a sumptuous burger that's a taste explosion of high-quality ingredients and secret spices, all served with a side of culinary happiness.",1L, "https://bit.ly/3R7zt4P");
+			FoodModel f8 = new FoodModel("Burger", 6, "Burger Eats takes you on a journey to Burger Bliss. Sink your teeth into a sumptuous burger that's a taste explosion of high-quality ingredients and secret spices, all served with a side of culinary happiness.",1L, "https://bit.ly/3R7zt4P", 2.2);
 			f8.setRestaurant(r6);
 			foodModelList.add(f8);
 
-			FoodModel f9 = new FoodModel("Taco", 9, "At Crispy Delights, the Crispy Delights Taco is a carnival for your taste buds. Expect a symphony of flavors and textures, from the crispy shell to the savory fillings and zesty sauces, all crafted to perfection.",1L, "https://bit.ly/47ijgiB");
+			FoodModel f9 = new FoodModel("Taco", 9, "At Crispy Delights, the Crispy Delights Taco is a carnival for your taste buds. Expect a symphony of flavors and textures, from the crispy shell to the savory fillings and zesty sauces, all crafted to perfection.",1L, "https://bit.ly/47ijgiB", 4.3);
 			f9.setRestaurant(r6);
 			foodModelList.add(f9);
 
-			FoodModel f10 = new FoodModel("California Sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "http://surl.li/npjxs");
+			FoodModel f10 = new FoodModel("California Sushi", 4, "Sweet Sushi offers a whimsical take on traditional sushi with the Sweet Sushi Delight. Dive into a world where sushi meets dessert, featuring delightful rice treats, candy fish, and sugary soy sauce. A unique and playful experience for your palate!",1L, "http://surl.li/npjxs",3.5);
 			f10.setRestaurant(r7);
 			foodModelList.add(f10);
 

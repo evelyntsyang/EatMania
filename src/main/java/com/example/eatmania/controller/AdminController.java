@@ -13,7 +13,7 @@ import java.util.ListResourceBundle;
 import java.util.Optional;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -132,6 +132,41 @@ public class AdminController {
         }
 
 
+        //Update a restaurant by ID
+        @PutMapping(path = "/restaurants/{id}")
+        public ResponseEntity<RestaurantModel> editRestaurant(@RequestBody RestaurantModel restaurant, @PathVariable Long id){
+
+                try{
+                        Optional<RestaurantModel> aRestaurant = restaurantRepo.findRestaurantModelByRestaurantId(id);
+
+                        if(restaurantRepo.findRestaurantModelByRestaurantId(id).isPresent()){
+
+                                RestaurantModel _aRestaurant = aRestaurant.get();
+
+                                _aRestaurant.setName(restaurant.getName());
+                                _aRestaurant.setPhoneNumber(restaurant.getPhoneNumber());
+                                _aRestaurant.setCuisineType(restaurant.getCuisineType());
+                                _aRestaurant.setRating(restaurant.getRating());
+                                _aRestaurant.setDescription(restaurant.getDescription());
+                                _aRestaurant.setWebsite(restaurant.getWebsite());
+
+                                restaurantRepo.save(_aRestaurant);
+
+                                return new ResponseEntity<>(_aRestaurant, HttpStatus.OK);
+                        }
+                        else{
+                                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+                        }
+
+                }
+                catch (Exception e){
+
+                        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
+        }
+
+
 
 
         //Creates a food item and adds the restaurant that it belongs to.
@@ -139,7 +174,7 @@ public class AdminController {
         public ResponseEntity<FoodModel> createFoodItem(@RequestBody FoodModel foodItem, @PathVariable ("id") long id){
 
                 try {
-                        FoodModel newFood = new FoodModel(foodItem.getFoodName(), foodItem.getFoodPrice(), foodItem.getDescription(), foodItem.getAdminID(), foodItem.getImage());
+                        FoodModel newFood = new FoodModel(foodItem.getFoodName(), foodItem.getFoodPrice(), foodItem.getDescription(), foodItem.getAdminID(), foodItem.getImage(), foodItem.getRating());
                         newFood.setRestaurant(restaurantRepo.findRestaurantModelByRestaurantId(id).get());
                         foodRepo.save(newFood);
                         return new ResponseEntity<>(newFood , HttpStatus.CREATED);
@@ -161,6 +196,37 @@ public class AdminController {
                 catch(Exception e){
                         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
+        }
+
+        //Updates a food item
+        @PutMapping(path = "/restaurants/{id}/fooditem/{foodid}")
+        public ResponseEntity<FoodModel> editFoodItem(@RequestBody FoodModel foodItem, @PathVariable("id") long restaurantId, @PathVariable("foodid") long foodId){
+
+                try{
+                        Optional<FoodModel> aFoodItem = foodRepo.findFoodModelByFoodId(foodId);
+
+                        if(foodRepo.findFoodModelByFoodId(foodId).isPresent()){
+
+                                FoodModel _aFoodItem = aFoodItem.get();
+                                _aFoodItem.setFoodName(foodItem.getFoodName());
+                                _aFoodItem.setFoodPrice(foodItem.getFoodPrice());
+                                _aFoodItem.setDescription(foodItem.getDescription());
+                                _aFoodItem.setAdminID(foodItem.getAdminID());
+
+                                foodRepo.save(_aFoodItem);
+
+                                return new ResponseEntity<>(_aFoodItem, HttpStatus.OK);
+                        }
+                        else{
+                                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+                        }
+
+                }
+                catch (Exception e){
+
+                        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
         }
 
 
